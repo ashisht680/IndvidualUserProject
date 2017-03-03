@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "911390072450",
+    "firebase_url": "https://individual-user.firebaseio.com",
+    "project_id": "individual-user",
+    "storage_bucket": "individual-user.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911390072450:android:0641e391dee09ce5",
+        "android_client_info": {
+          "package_name": "com.javinindia.individualuser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911390072450-k0evcocj91nab377t4pb4k41vghdn6rk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.javinindia.individualuser",
+            "certificate_hash": "a5e612efb53345bcf0d4a5fc5e149d4bb8c0fdb5"
+          }
+        },
+        {
+          "client_id": "911390072450-84sle386n14i18a3a0pr7boavko0ougq.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "911390072450-64covjec4n1t1p5m28mt538ul8bkbjep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnyRUPkrgDOPtB2rNrv9lqmEG4WLlax6E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

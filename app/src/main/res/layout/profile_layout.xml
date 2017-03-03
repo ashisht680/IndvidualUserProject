@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splesh"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_toolbar_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_border_black">
+
+
+                <include layout="@layout/common_progressbar" />
+
+                <ImageView
+                    android:id="@+id/imgProfilePic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="300dp"
+                    android:minWidth="300dp"
+                    android:src="@drawable/no_image_icon" />
+
+                <RelativeLayout
+                    android:id="@+id/rlBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black_transparent_color"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/imgProfile"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/favourite_malls" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgProfile"
+                        android:layout_centerInParent="true"
+                        android:text="Profile"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"
+                        app:textAllCaps="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/black_transparent_color">
+
+                    <RelativeLayout
+                        android:id="@+id/rlEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:padding="2dp">
+
+                        <ImageView
+                            android:id="@+id/imgEdit"
+                            android:layout_width="30dp"
+                            android:layout_height="15dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/events" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtEdit"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/imgEdit"
+                            android:gravity="center"
+                            android:text="Edit"
+                            android:textColor="@android:color/white"
+                            android:textSize="10dp" />
+                    </RelativeLayout>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/personName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text=""
+                        android:lines="1"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue_button_color">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtEmailHd"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:background="@android:color/white"
+                        android:gravity="center|left"
+                        android:paddingLeft="5dp"
+                        android:text="Email"
+                        android:textColor="@color/blue_button_color"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/img1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/txtEmailHd"
+                        android:rotation="0"
+                        android:src="@drawable/shape_white_triangle" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtEmailAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_toLeftOf="@+id/imgverify1"
+                        android:layout_toRightOf="@+id/img1"
+                        android:gravity="center|left"
+                        android:lines="1"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/imgverify1"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="5dp"
+                        android:src="@mipmap/ic_launcher"
+                        android:visibility="gone" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@android:color/white"></View>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue_button_color">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtMobileHd"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:background="@android:color/white"
+                        android:gravity="center|left"
+                        android:paddingLeft="5dp"
+                        android:text="Mobile no."
+                        android:textColor="@color/blue_button_color"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/img2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/txtMobileHd"
+                        android:rotation="0"
+                        android:src="@drawable/shape_white_triangle" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtMobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_toLeftOf="@+id/imgverify2"
+                        android:layout_toRightOf="@+id/img2"
+                        android:gravity="center|left"
+                        android:lines="1"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/imgverify2"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="5dp"
+                        android:src="@mipmap/ic_launcher"
+                        android:visibility="gone" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@android:color/white"></View>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue_button_color">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtGenderHd"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:background="@android:color/white"
+                        android:gravity="center|left"
+                        android:paddingLeft="5dp"
+                        android:text="Gender"
+                        android:textColor="@color/blue_button_color"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/img3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/txtGenderHd"
+                        android:rotation="0"
+                        android:src="@drawable/shape_white_triangle" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/img3"
+                        android:gravity="center|left"
+                        android:lines="1"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@android:color/white"></View>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue_button_color">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtDOBHd"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:background="@android:color/white"
+                        android:gravity="center|left"
+                        android:paddingLeft="5dp"
+                        android:text="Date of Birth"
+                        android:textColor="@color/blue_button_color"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/img4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/txtDOBHd"
+                        android:rotation="0"
+                        android:src="@drawable/shape_white_triangle" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtDOB"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/img4"
+                        android:gravity="center|left"
+                        android:lines="1"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@android:color/white"></View>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue_button_color">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtStateHd"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:background="@android:color/white"
+                        android:gravity="center|left"
+                        android:paddingLeft="5dp"
+                        android:text="State"
+                        android:textColor="@color/blue_button_color"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/img5"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/txtStateHd"
+                        android:rotation="0"
+                        android:src="@drawable/shape_white_triangle" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtState"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/img5"
+                        android:gravity="center|left"
+                        android:lines="1"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@android:color/white"></View>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue_button_color">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtCityHd"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:background="@android:color/white"
+                        android:gravity="center|left"
+                        android:paddingLeft="5dp"
+                        android:text="City"
+                        android:textColor="@color/blue_button_color"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/img6"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/txtCityHd"
+                        android:rotation="0"
+                        android:src="@drawable/shape_white_triangle" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/img6"
+                        android:gravity="center|left"
+                        android:lines="1"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@android:color/white"></View>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue_button_color">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtAddressHd"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:background="@android:color/white"
+                        android:gravity="center|left"
+                        android:paddingLeft="5dp"
+                        android:text="Address"
+                        android:textColor="@color/blue_button_color"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/img7"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/txtAddressHd"
+                        android:rotation="0"
+                        android:src="@drawable/shape_white_triangle" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/img7"
+                        android:gravity="center|left"
+                        android:lines="1"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="12dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@android:color/white"></View>
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

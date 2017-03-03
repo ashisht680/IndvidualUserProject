@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splesh"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_toolbar_layout" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/txtTitleBrand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:text="Search Brand"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/llSearch"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/txtTitleBrand"
+        android:background="#e3e3e3"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        android:visibility="visible"
+        android:weightSum="7">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6.3"
+            android:background="@drawable/button_border_black_fill_white"
+            android:hint="Search brand"
+            android:padding="2dp"
+            android:singleLine="true"
+            android:textSize="12dp" />
+
+        <ImageView
+            android:id="@+id/imgSearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:background="@android:color/black"
+            android:src="@drawable/search_white" />
+        <!--  <Spinner
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:textAlignment="center"
+              android:layout_weight="1.5">
+
+          </Spinner>-->
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            layout="@layout/common_progressbar"
+            android:visibility="gone" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerviewMallOffer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/txtDataNotFound"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="There are no offer under this brand."
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+</LinearLayout>
