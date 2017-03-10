@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="If you are looking for offers relating to a particular shop/ brand that are not listed on Ample as yet, please drop your suggestions below.."
+                android:text="If you are looking for offers relating to a particular shop/ brand that are not listed on Sale50 as yet, please drop your suggestions below.."
                 android:textColor="@android:color/white" />
 
             <android.support.v7.widget.AppCompatEditText
@@ -49,7 +49,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_border_white"
                 android:gravity="top"
-                android:hint="We would love to hear from you! Tell us what you think about the Ample App..."
+                android:hint="We would love to hear from you! Tell us what you think about the Sale50 App..."
                 android:padding="5dp"
                 android:textSize="16sp"
                 android:textColor="@android:color/white"

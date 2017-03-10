@@ -245,6 +245,7 @@ public class SearchBrandResultFragment extends BaseFragment implements View.OnCl
         String city  = detailsList.getOfferShopDetails().getShopCity().trim();
         String state = detailsList.getOfferShopDetails().getShopState().trim();
         String floor = detailsList.getOfferShopDetails().getShopFloorNo().trim();
+        String mobile = detailsList.getOfferShopDetails().getShopMobile().trim();
         int favStatus = detailsList.getFavStatus();
         final ArrayList<String> data = new ArrayList<>();
         if (!TextUtils.isEmpty(shopNo)){
@@ -269,6 +270,7 @@ public class SearchBrandResultFragment extends BaseFragment implements View.OnCl
         OfferPostFragment fragment1 = new OfferPostFragment();
 
         Bundle bundle = new Bundle();
+        bundle.putString("mobile",mobile);
         bundle.putString("owner",owner);
         bundle.putString("shopPic", shopPic);
         bundle.putString("shopNewAddress", shopNewAddress);

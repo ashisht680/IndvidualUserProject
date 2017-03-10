@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Individual User</string>
+    <string name="app_name">Sale50</string>
     <string name="action_search">search</string>
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
@@ -10,7 +10,6 @@
     <string name="Home">Home &amp; Living</string>
     <string name="Kitchen">Kitchen &amp; Bath</string>
     <string name="API_KEY">AIzaSyBnyRUPkrgDOPtB2rNrv9lqmEG4WLlax6E</string>
-
     <string name="facebook_app_id">417915548600524</string>
 
     <!--    Permissions    -->

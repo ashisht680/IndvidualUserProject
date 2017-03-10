@@ -152,11 +152,11 @@ public class StoreTabsFragment extends BaseFragment {
 
                             if (!TextUtils.isEmpty(responseparsing.getDetailsListArrayList().get(0).getRating().trim())) {
                                 shopRating = responseparsing.getDetailsListArrayList().get(0).getRating().trim();
-                                txtRating.setText("Rating: " + shopRating + "/5");
-                                ratingBar.setRating(Float.parseFloat(shopRating));
+                                txtRating.setText("Rating: 3.5/5");
+                                ratingBar.setRating(Float.parseFloat("3.5"));
                             } else {
-                                txtRating.setText("Rating: 0/5");
-                                ratingBar.setRating((float) 0.0);
+                                txtRating.setText("Rating: 3.5/5");
+                                ratingBar.setRating((float) 3.5);
                             }
 
                             final ArrayList<String> data = new ArrayList<>();
@@ -274,11 +274,11 @@ public class StoreTabsFragment extends BaseFragment {
         }
 
         if (!TextUtils.isEmpty(shopRating)) {
-            txtRating.setText("Rating: " + shopRating + "/5");
-            ratingBar.setRating(Float.parseFloat(shopRating));
+            txtRating.setText("Rating: 3.5/5");
+            ratingBar.setRating(Float.parseFloat("3.5"));
         } else {
-            txtRating.setText("Rating: 0/5");
-            ratingBar.setRating((float) 0.0);
+            txtRating.setText("Rating: 3.5/5");
+            ratingBar.setRating((float) 3.5);
         }
 
         if (!TextUtils.isEmpty(address)) {

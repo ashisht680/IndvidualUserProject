@@ -19,6 +19,9 @@ public class Constants {
     public static final String OFFERS_IN_SHOP_LIST_URL = Constants.NEW_BASE_URL + "offerByMallShop.php";
     public static final String OFFERS_VIEW_HIT_URL = Constants.NEW_BASE_URL + "offerByUsers.php";
 
+    //new api
+    public static final String OFFERS_CONTACT_VIEW_HIT_URL = Constants.NEW_BASE_URL + "visitContact.php";
+
     public static final String ADD_FAVORITE_MALL_URL = Constants.NEW_BASE_URL + "AddFavorite.php";
     public static final String ADD_FAVORITE_SHOP_URL = Constants.NEW_BASE_URL + "AddFavoriteShop.php";
     public static final String ADD_FAVORITE_OFFER_URL = Constants.NEW_BASE_URL + "AddFavoriteOffer.php";

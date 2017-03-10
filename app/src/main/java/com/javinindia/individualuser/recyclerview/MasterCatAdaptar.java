@@ -65,9 +65,11 @@ public class MasterCatAdaptar extends RecyclerView.Adapter<MasterCatAdaptar.View
         }
         if (!TextUtils.isEmpty(categoryList.getCat_pic().trim())) {
             String pic = categoryList.getCat_pic().trim();
-            Picasso.with(context).load(pic).transform(new CircleTransform()).into(viewHolder.imgCat);
+           // Picasso.with(context).load(pic).transform(new CircleTransform()).into(viewHolder.imgCat);
+            Utility.imageLoadGlideLibrary(context, viewHolder.progressBar, viewHolder.imgCat, pic);
         }else {
-            Picasso.with(context).load(R.drawable.no_image_icon).transform(new CircleTransform()).into(viewHolder.imgCat);
+            viewHolder.imgCat.setImageResource(R.mipmap.logo);
+           // Picasso.with(context).load(R.drawable.no_image_icon).transform(new CircleTransform()).into(viewHolder.imgCat);
         }
 
         viewHolder.rlMain.setOnClickListener(new View.OnClickListener() {

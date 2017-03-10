@@ -212,6 +212,7 @@ public class OffersFragment extends BaseFragment implements OfferAdaptar.MyClick
         String city  = detailsList.getOfferShopDetails().getShopCity().trim();
         String state = detailsList.getOfferShopDetails().getShopState().trim();
         String floor = detailsList.getOfferShopDetails().getShopFloorNo().trim();
+        String mobile = detailsList.getOfferShopDetails().getShopMobile().trim();
         int favStatus = detailsList.getFavStatus();
         final ArrayList<String> data = new ArrayList<>();
         if (!TextUtils.isEmpty(shopNo)){
@@ -236,6 +237,7 @@ public class OffersFragment extends BaseFragment implements OfferAdaptar.MyClick
         OfferPostFragment fragment1 = new OfferPostFragment();
 
         Bundle bundle = new Bundle();
+        bundle.putString("mobile",mobile);
         bundle.putString("owner",owner);
         bundle.putString("shopPic",shopPic);
         bundle.putString("shopNewAddress", shopNewAddress);
@@ -285,6 +287,7 @@ public class OffersFragment extends BaseFragment implements OfferAdaptar.MyClick
         if (CheckConnection.haveNetworkConnection(activity)) {
             String shopId = detailsList.getOfferShopDetails().getShopId().trim();
             String mallId = detailsList.getOfferMallDetails().getMallid().trim();
+           // String shopRating = detailsList.getOfferShopDetails().get
             String ownername = detailsList.getOfferShopDetails().getShopOwnerName().trim();
             SharedPreferencesManager.setMAllId(activity,mallId);
             SharedPreferencesManager.setShopId(activity, shopId);
@@ -297,7 +300,7 @@ public class OffersFragment extends BaseFragment implements OfferAdaptar.MyClick
             bundle.putString("shopName", "");
             bundle.putString("shopPic", "");
             bundle.putString("mallName", "");
-            bundle.putString("shopRating", "");
+            bundle.putString("shopRating", "3.5");
             bundle.putInt("totalOffers", 0);
             bundle.putInt("favStatus", 0);
             bundle.putString("address","");

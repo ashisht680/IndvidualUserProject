@@ -3,7 +3,7 @@
 <resources>
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#ffffff</color>
-    <color name="colorAccent">#ff6326</color>
+    <color name="colorAccent">#757575</color>
     <color name="sq_background_blue">#e0e0e0</color>
     <color name="ripple_color">#f2f2f2</color>
     <color name="wow_color">#b94115</color>
@@ -14,13 +14,14 @@
     <color name="tab_text_color">#a1a1a1</color>
     <color name="yellow_color">#F2E230</color>
     <!--  <color name="toolbar_color">#1da6b9</color>-->
-    <color name="toolbar_color">#ff6326</color>
+    <color name="toolbar_color">#f23b42</color>
     <!--<color name="background_color">#ed6269</color>-->
     <color name="background_color">#d6ecf9</color>
     <color name="highlight_color">#4a4a4a</color>
     <color name="mini_black_color">#191919</color>
     <color name="text_color">#7b7b7b</color>
     <color name="black_transparent_color">#99000000</color>
+    <color name="white_transparent_color">#99ffffff</color>
     <!--<color name="direction_button_color">#a1161d</color>-->
     <color name="direction_button_color">#ff6326</color>
     <color name="brown_color">#613535</color>

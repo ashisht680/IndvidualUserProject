@@ -261,7 +261,7 @@ public class HomeFragment extends BaseFragment implements NavigationAboutFragmen
                 try {
                     Intent i = new Intent(Intent.ACTION_SEND);
                     i.setType("text/plain");
-                    i.putExtra(Intent.EXTRA_SUBJECT, "Ample App");
+                    i.putExtra(Intent.EXTRA_SUBJECT, "Sale50 App");
                     String sAux = "\nLet me recommend you this application\n\n";
                     sAux = sAux + "https://play.google.com/store/apps/details?id=com.javinindia.individualuser\n\n";
                     i.putExtra(Intent.EXTRA_TEXT, sAux);

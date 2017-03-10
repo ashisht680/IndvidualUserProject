@@ -1,5 +1,8 @@
 package com.javinindia.individualuser.fragments;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.net.Uri;
@@ -45,16 +48,14 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
     ImageView imgBrand, imgOffer;
     RatingBar ratingBar;
     AppCompatTextView txtOfferBrandNamePost, txtRating, txtMallNamePost, txtOfferPercentage, txtSubcategory,
-            txtOfferDate, txtShopTiming, txtOfferDiscription, txtOfferActualPrice, txtOfferTitle,txtAddress,txtOfferDiscountPrice;
+            txtOfferDate, txtShopTiming, txtOfferDiscription, txtOfferActualPrice, txtOfferTitle, txtAddress, txtOfferDiscountPrice;
     AppCompatButton btnRate;
     CheckBox chkImageMall;
     ProgressBar progressBar;
 
     String brandName, brandPic, shopName, mallName, offerRating, offerPic, offerTitle, offerCategory, offerSubCategory, offerPercentType,
-            offerPercentage, offerActualPrice, offerDiscountPr, offerStartDate, offerCloseDate, offerDescription, shopOpenTime, shopCloseTime
-            ,offerId,shopId,shopNewAddress,shopPic,owner;
-    int favStatus=0,position;
-
+            offerPercentage, offerActualPrice, offerDiscountPr, offerStartDate, offerCloseDate, offerDescription, shopOpenTime, shopCloseTime, offerId, shopId, shopNewAddress, shopPic, owner, mobile;
+    int favStatus = 0, position;
 
 
     private OnCallBackOfferDetailFavListener onCallBackOfferDetailFavListener;
@@ -71,6 +72,7 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        mobile = getArguments().getString("mobile");
         owner = getArguments().getString("owner");
         shopPic = getArguments().getString("shopPic");
         brandName = getArguments().getString("brandName");
@@ -93,8 +95,8 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
         shopCloseTime = getArguments().getString("shopCloseTime");
         offerId = getArguments().getString("offerId");
         shopId = getArguments().getString("shopId");
-        favStatus= getArguments().getInt("favStatus");
-        position =getArguments().getInt("position");
+        favStatus = getArguments().getInt("favStatus");
+        position = getArguments().getInt("position");
         shopNewAddress = getArguments().getString("shopNewAddress");
     }
 
@@ -107,7 +109,7 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
         initialize(view);
         setDataOnView();
         String uid = SharedPreferencesManager.getUserID(activity);
-        hitViewApi(uid,offerId,shopId);
+        hitViewApi(uid, offerId, shopId);
         return view;
     }
 
@@ -123,12 +125,12 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
         });
         final ActionBar actionBar = activity.getSupportActionBar();
         actionBar.setTitle(null);
-        AppCompatTextView textView =(AppCompatTextView)view.findViewById(R.id.tittle) ;
-        if (!TextUtils.isEmpty(shopName)){
-            textView.setText(shopName);
-        }else if (!TextUtils.isEmpty(brandName)){
+        AppCompatTextView textView = (AppCompatTextView) view.findViewById(R.id.tittle);
+        if (!TextUtils.isEmpty(owner)) {
+            textView.setText(owner);
+        } else if (!TextUtils.isEmpty(brandName)) {
             textView.setText(brandName);
-        }else {
+        } else {
             textView.setText("Offer");
         }
         textView.setTypeface(FontAsapRegularSingleTonClass.getInstance(activity).getTypeFace());
@@ -164,7 +166,7 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
 
                         } else {
                             if (!TextUtils.isEmpty(msg)) {
-                              //  showDialogMethod(msg);
+                                //  showDialogMethod(msg);
                             }
                         }
                     }
@@ -196,12 +198,17 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
         if (!TextUtils.isEmpty(brandName))
             txtOfferBrandNamePost.setText(Utility.fromHtml(brandName));
 
-        if (!TextUtils.isEmpty(offerRating))
-            txtRating.setText("Rating:" + offerRating + "/5");
-            ratingBar.setRating(Float.valueOf(offerRating));
+        if (!TextUtils.isEmpty(offerRating)) {
+            txtRating.setText("Rating: 3.5/5");
+            ratingBar.setRating(Float.valueOf("3.5"));
+        } else {
+            txtRating.setText("Rating: 3.5/5");
+            ratingBar.setRating(Float.valueOf("3.5"));
+        }
+
 
         if (!TextUtils.isEmpty(owner))
-            txtMallNamePost.setText( Utility.fromHtml(owner));
+            txtMallNamePost.setText(Utility.fromHtml(owner));
 
         if (!TextUtils.isEmpty(offerTitle))
             txtOfferTitle.setText(Utility.fromHtml(offerTitle));
@@ -234,7 +241,7 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
             txtSubcategory.setText("on " + Utility.fromHtml(offerCategory) + "(" + Utility.fromHtml(offerSubCategory) + ")");
 
         if (!TextUtils.isEmpty(offerStartDate) && !TextUtils.isEmpty(offerCloseDate))
-            txtOfferDate.setText(offerStartDate + " till " + offerCloseDate);
+            txtOfferDate.setText("Valid from " + offerStartDate + " till " + offerCloseDate);
 
         if (!TextUtils.isEmpty(shopOpenTime) && !TextUtils.isEmpty(shopCloseTime))
             txtShopTiming.setText(shopOpenTime + " to " + shopCloseTime);
@@ -244,21 +251,21 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
 
         if (!TextUtils.isEmpty(offerPic)) {
             Utility.imageLoadGlideLibrary(activity, progressBar, imgOffer, offerPic);
-        } else if (!TextUtils.isEmpty(brandPic)){
+        } else if (!TextUtils.isEmpty(brandPic)) {
             Utility.imageLoadGlideLibrary(activity, progressBar, imgOffer, brandPic);
-        }else {
+        } else {
             imgOffer.setImageResource(R.drawable.no_image_icon);
         }
 
         if (!TextUtils.isEmpty(shopPic)) {
             Utility.imageLoadGlideLibrary(activity, progressBar, imgBrand, shopPic);
-        } else if (!TextUtils.isEmpty(brandPic)){
+        } else if (!TextUtils.isEmpty(brandPic)) {
             Utility.imageLoadGlideLibrary(activity, progressBar, imgBrand, brandPic);
-        }else {
+        } else {
             imgBrand.setImageResource(R.drawable.no_image_icon);
         }
 
-        if (!TextUtils.isEmpty(shopNewAddress)){
+        if (!TextUtils.isEmpty(shopNewAddress)) {
             txtAddress.setText(shopNewAddress);
         }
 
@@ -312,10 +319,10 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
                             if (jsonObject.has("action"))
                                 action = jsonObject.optInt("action");
 
-                            onCallBackOfferDetailFavListener.OnCallBackOfferDetailFav(position,action);
+                            onCallBackOfferDetailFavListener.OnCallBackOfferDetailFav(position, action);
                         } else {
                             if (!TextUtils.isEmpty(msg)) {
-                               // showDialogMethod(msg);
+                                // showDialogMethod(msg);
                             }
                         }
                     }
@@ -405,12 +412,8 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnRate:
-                final String appPackageName = activity.getPackageName();
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-                } catch (android.content.ActivityNotFoundException anfe) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
-                }
+                String uid = SharedPreferencesManager.getUserID(activity);
+                hitCotectViewApi(uid, offerId, shopId);
                 break;
             case R.id.imgBrand:
                 activity.onBackPressed();
@@ -423,5 +426,92 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
         super.onPrepareOptionsMenu(menu);
         if (menu != null)
             menu.clear();
+    }
+
+    public void showContectDialog(String title, String msg) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                getActivity());
+        alertDialogBuilder.setTitle("Want to purchase the product?\nContact the seller here:");
+        alertDialogBuilder.setMessage("Name: " + title + "\n" + "Mobile no: " + msg);
+        alertDialogBuilder.setCancelable(false);
+
+        alertDialogBuilder.setNegativeButton("Got it!",
+                new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    private void hitCotectViewApi(final String uid, final String offerId, final String shopId) {
+        final ProgressDialog loading = ProgressDialog.show(activity, "Searching...", "Please wait...", false, false);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.OFFERS_CONTACT_VIEW_HIT_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        loading.dismiss();
+                        JSONObject jsonObject = null;
+                        String userid = null, msg = null, username = null, password = null, shopid = null, offerid = null;
+                        int status = 0, action = 0;
+                        try {
+                            jsonObject = new JSONObject(response);
+                            if (jsonObject.has("status"))
+                                status = jsonObject.optInt("status");
+                            if (jsonObject.has("msg"))
+                                msg = jsonObject.optString("msg");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        if (status == 1) {
+                            String name = "";
+                            String mobileShop = "";
+                            if (!TextUtils.isEmpty(owner)) {
+                                name = owner;
+                            } else {
+                                name = "name not available";
+                            }
+                            if (!TextUtils.isEmpty(mobile)) {
+                                mobileShop = mobile;
+                            } else {
+                                mobileShop = "name not available";
+                            }
+
+                            showContectDialog(name, mobileShop);
+
+                        } else {
+                            if (!TextUtils.isEmpty(msg)) {
+                                //  showDialogMethod(msg);
+                            }
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        loading.dismiss();
+                        volleyErrorHandle(error);
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("userid", uid);
+                params.put("shopid", shopId);
+                params.put("offerid", offerId);
+                return params;
+            }
+
+        };
+        stringRequest.setTag(this.getClass().getSimpleName());
+        volleyDefaultTimeIncreaseMethod(stringRequest);
+        requestQueue = Volley.newRequestQueue(activity);
+        requestQueue.add(stringRequest);
     }
 }
