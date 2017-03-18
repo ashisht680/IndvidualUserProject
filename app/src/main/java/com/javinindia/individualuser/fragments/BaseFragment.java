@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.icu.text.DateFormat;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -16,6 +17,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -39,6 +44,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.javinindia.individualuser.R;
 import com.javinindia.individualuser.activity.BaseActivity;
+import com.javinindia.individualuser.font.FontAsapRegularSingleTonClass;
+import com.javinindia.individualuser.utility.Utility;
 import com.javinindia.individualuser.volleycustomrequest.CustomJSONObjectRequest;
 import com.javinindia.individualuser.volleycustomrequest.CustomVolleyRequestQueue;
 
@@ -54,16 +61,13 @@ public abstract class BaseFragment extends Fragment implements Response.Listener
 
     private RequestQueue mQueue;
     public BaseActivity activity;
-    // For No internet Connection
     private Snackbar snackbar;
-
-    // BroadcastReceiver
+    private String toolbarTitle;
     private NetworkConnected networkConnected;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Window window = getActivity().getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -71,6 +75,89 @@ public abstract class BaseFragment extends Fragment implements Response.Listener
             window.setStatusBarColor(Color.parseColor("#000000"));
         }
     }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initializeToolBar();
+    }
+
+    //  ------------------------common toolbar start-------------------------//
+
+    public void initializeToolBar() {
+        if (isToolbarExist()) {
+            changeNavigationIcon();
+            changeTitle();
+        }
+    }
+    public boolean isToolbarExist() {
+        return (getView() != null && getView().findViewById(R.id.toolbar) != null);
+    }
+
+    private void changeNavigationIcon() {
+        if (isToolbarExist()) {
+            Toolbar toolbar = getToolbar();
+            int navigationIcon = R.drawable.ic_arrow_back_white;
+            if (navigationIcon != 0) {
+                toolbar.setNavigationIcon(navigationIcon);
+                attachNavigationIconListener(toolbar);
+            }
+        }
+    }
+
+    public Toolbar getToolbar() {
+        if (isToolbarExist()) {
+            return (Toolbar) getView().findViewById(R.id.toolbar);
+        }
+        return null;
+    }
+
+    protected void attachNavigationIconListener(Toolbar toolbar) {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.onBackPressed();
+            }
+        });
+    }
+
+    private void changeTitle() {
+        changeTitle(getToolbarTitle());
+    }
+
+    public void changeTitle(String title) {
+        if (isToolbarExist()) {
+            if (!TextUtils.isEmpty(title)) {
+                getToolbar().setTitle(title);
+                getToolbar().setTitleTextColor(Utility.getColor(activity,android.R.color.white));
+                applyFontForToolbarTitle(activity);
+            }
+        }
+    }
+
+    public static void applyFontForToolbarTitle(Activity a){
+        Toolbar toolbar = (Toolbar) a.findViewById(R.id.toolbar);
+        for(int i = 0; i < toolbar.getChildCount(); i++){
+            View view = toolbar.getChildAt(i);
+            if(view instanceof TextView){
+                TextView tv = (TextView) view;
+                if(tv.getText().equals(a.getTitle())){
+                    tv.setTypeface(FontAsapRegularSingleTonClass.getInstance(a).getTypeFace());
+                    break;
+                }
+            }
+        }
+    }
+
+    public String getToolbarTitle() {
+        return toolbarTitle;
+    }
+
+    public void setToolbarTitle(String toolbarTitle) {
+        this.toolbarTitle = toolbarTitle;
+    }
+
+    /// --------------------------------------    commen toolbar end--------------------------------------------------------//
 
     @Override
     public void onAttach(Context context) {
@@ -267,9 +354,6 @@ public abstract class BaseFragment extends Fragment implements Response.Listener
         }
     }
 
-    public void onBack(Activity activity){
-
-    }
 
     public void volleyErrorHandle(VolleyError error){
         NetworkResponse networkResponse = error.networkResponse;
@@ -392,5 +476,6 @@ public abstract class BaseFragment extends Fragment implements Response.Listener
             }
         }
     }
+
 }
 

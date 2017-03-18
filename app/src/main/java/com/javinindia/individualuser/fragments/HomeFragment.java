@@ -40,6 +40,7 @@ import com.javinindia.individualuser.R;
 import com.javinindia.individualuser.activity.LoginActivity;
 import com.javinindia.individualuser.activity.NavigationActivity;
 import com.javinindia.individualuser.constant.Constants;
+import com.javinindia.individualuser.font.FontAsapBoldSingleTonClass;
 import com.javinindia.individualuser.font.FontAsapRegularSingleTonClass;
 import com.javinindia.individualuser.picasso.CircleTransform;
 import com.javinindia.individualuser.preference.SharedPreferencesManager;
@@ -52,6 +53,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,10 +65,8 @@ public class HomeFragment extends BaseFragment implements NavigationAboutFragmen
     private RequestQueue requestQueue;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private Spinner spinner_nav;
     TextView txtCityName;
 
     @Override
@@ -87,16 +87,16 @@ public class HomeFragment extends BaseFragment implements NavigationAboutFragmen
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
-        if(!TextUtils.isEmpty(SharedPreferencesManager.getDeviceToken(activity))){
-            Log.d("home token",SharedPreferencesManager.getDeviceToken(activity));
-        }else {
-            Log.d("home token","not found");
+        if (!TextUtils.isEmpty(SharedPreferencesManager.getDeviceToken(activity))) {
+            Log.d("home token", SharedPreferencesManager.getDeviceToken(activity));
+        } else {
+            Log.d("home token", "not found");
         }
         return view;
     }
 
     private void initToolbar(View view) {
-        final Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbarHome);
         activity.setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.menu);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -108,7 +108,6 @@ public class HomeFragment extends BaseFragment implements NavigationAboutFragmen
 
         final ActionBar actionBar = activity.getSupportActionBar();
         actionBar.setTitle(null);
-
         txtCityName = (TextView) view.findViewById(R.id.txtCityName);
         txtCityName.setTypeface(FontAsapRegularSingleTonClass.getInstance(activity).getTypeFace());
         if (!TextUtils.isEmpty(SharedPreferencesManager.getCity(activity)) && !SharedPreferencesManager.getCity(activity).equals(null)) {
@@ -117,77 +116,36 @@ public class HomeFragment extends BaseFragment implements NavigationAboutFragmen
         txtCityName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtCityName.setVisibility(View.GONE);
-                spinner_nav.setVisibility(View.VISIBLE);
-                spinner_nav.performClick();
-                addItemsToSpinner();
+                methodCityDialog();
             }
         });
-        spinner_nav = (Spinner) view.findViewById(R.id.spinner_nav);
     }
 
-    // add items into spinner dynamically
-    public void addItemsToSpinner() {
-
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("City");
-        list.add("Delhi NCR");
-        list.add("Mumbai");
-        // list.add("Kolkata");
-        list.add("Bengaluru");
-        list.add("Chennai");
-        // list.add("Hyderabad");
-
-        // Custom ArrayAdapter with spinner item layout to set popup background
-
-        CustomSpinnerAdater spinAdapter = new CustomSpinnerAdater(
-                activity, list);
+    private void methodCityDialog() {
 
 
-        spinner_nav.setAdapter(spinAdapter);
-        // iCurrentSelection = spinner_nav.getSelectedItemPosition();
-        spinner_nav.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> adapter, View v,
-                                       int position, long id) {
-
-                if (position != 0) {
-                    // On selecting a spinner item
-                    String item = adapter.getItemAtPosition(position).toString();
-                    if (!item.equals(SharedPreferencesManager.getCity(activity))) {
-                        // Showing selected spinner item
-                        Toast.makeText(activity, "Selected  : " + item,
-                                Toast.LENGTH_LONG).show();
-                        SharedPreferencesManager.setCity(activity, item);
-                        Intent refresh = new Intent(activity, NavigationActivity.class);
-                        startActivity(refresh);//Start the same Activity
-                        activity.finish();
-                        txtCityName.setText(item);
-                        spinner_nav.setVisibility(View.GONE);
-                        txtCityName.setVisibility(View.VISIBLE);
-                    } else {
-                        spinner_nav.setVisibility(View.GONE);
-                        txtCityName.setVisibility(View.VISIBLE);
-                    }
-                } else {
-                    //  spinner_nav.setVisibility(View.GONE);
-                    //  txtCityName.setVisibility(View.VISIBLE);
+        TextView content = new TextView(activity);
+        content.setTypeface(FontAsapBoldSingleTonClass.getInstance(activity).getTypeFace());
+        final String stateArray[] = {"Delhi NCR", "Mumbai", "Bengaluru", "Chennai", "Kolkata"};
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(activity);
+        builder.setView(content);
+        builder.setTitle("SELECT CITY");
+        builder.setNegativeButton(android.R.string.cancel, null);
+        builder.setItems(stateArray, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                if (!stateArray[item].equals(SharedPreferencesManager.getCity(activity))) {
+                    SharedPreferencesManager.setCity(activity, stateArray[item]);
+                    Intent refresh = new Intent(activity, NavigationActivity.class);
+                    startActivity(refresh);
+                    activity.finish();
                 }
-
+                Toast.makeText(activity, "Selected  : " + stateArray[item], Toast.LENGTH_LONG).show();
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
         });
-
-        //  spinner_nav.setSelection(1);
-
+        builder.create();
+        builder.show();
     }
+
 
     private void setupTabIcons() {
 
@@ -325,8 +283,8 @@ public class HomeFragment extends BaseFragment implements NavigationAboutFragmen
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
-        alertDialog.getButton(alertDialog.BUTTON_NEGATIVE).setTextColor(Utility.getColor(activity,R.color.toolbar_color));
-        alertDialog.getButton(alertDialog.BUTTON_POSITIVE).setTextColor(Utility.getColor(activity,R.color.toolbar_color));
+        alertDialog.getButton(alertDialog.BUTTON_NEGATIVE).setTextColor(Utility.getColor(activity, R.color.toolbar_color));
+        alertDialog.getButton(alertDialog.BUTTON_POSITIVE).setTextColor(Utility.getColor(activity, R.color.toolbar_color));
     }
 
 
@@ -446,7 +404,7 @@ public class HomeFragment extends BaseFragment implements NavigationAboutFragmen
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-       // adapter.addFragment(new MallsFragmet(), "Malls");
+        // adapter.addFragment(new MallsFragmet(), "Malls");
         adapter.addFragment(new OffersFragment(), "Offers");
         // adapter.addFragment(new EventFragment(), "Event");
         adapter.addFragment(new SearchTabFragment(), "Search");

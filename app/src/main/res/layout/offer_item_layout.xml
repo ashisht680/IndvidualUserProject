@@ -11,127 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:id="@+id/rlItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp">
-
-            <CheckBox
-                android:id="@+id/chkImageOffer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:button="@drawable/selector"
-                android:scaleX="0.5"
-                android:scaleY="0.5"
-                android:transformPivotX="34dp"
-                android:transformPivotY="0dp" />
-
-            <ProgressBar
-                android:id="@+id/progress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="35dp"
-                android:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/imgShopLogoOffer"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:background="@drawable/button_border_black"
-                android:padding="1dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/no_image_icon" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/txtShopName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_toLeftOf="@+id/chkImageOffer"
-                android:layout_toRightOf="@+id/imgShopLogoOffer"
-                android:lines="1"
-                android:text=""
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/txtMallName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtShopName"
-                android:layout_marginLeft="5dp"
-                android:layout_toLeftOf="@+id/chkImageOffer"
-                android:layout_toRightOf="@+id/imgShopLogoOffer"
-                android:lines="1"
-                android:text=""
-                android:textColor="@android:color/black"
-                android:visibility="gone"/>
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/txtAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtMallName"
-                android:layout_marginLeft="5dp"
-                android:layout_toLeftOf="@+id/chkImageOffer"
-                android:layout_toRightOf="@+id/imgShopLogoOffer"
-                android:maxLines="2"
-                android:text=""
-                android:textSize="12sp" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/txtOfferTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtAddress"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_toRightOf="@+id/imgShopLogoOffer"
-                android:lines="1"
-                android:text=""
-                android:textColor="@android:color/holo_red_dark"
-                android:textSize="20sp" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/txtOfferCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtOfferTitle"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@+id/imgShopLogoOffer"
-                android:lines="1"
-                android:text=""
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:visibility="visible" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/txtTimingOffer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtOfferCategory"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@+id/imgShopLogoOffer"
-                android:lines="1"
-                android:text=""
-                android:textSize="12sp" />
-
-            <View
-                android:id="@+id/viewLine"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/imgShopLogoOffer"
-                android:layout_marginTop="10dp"
-                android:background="@color/wow_gray"
-                android:visibility="invisible"></View>
-        </RelativeLayout>
-
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
@@ -232,6 +111,133 @@
 
 
         </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <CheckBox
+                android:id="@+id/chkImageOffer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:button="@drawable/selector"
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                android:transformPivotX="34dp"
+                android:transformPivotY="0dp" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="35dp"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/imgShopLogoOffer"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="@drawable/button_border_black"
+                android:padding="1dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/no_image_icon" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txtOfferTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/imgShopLogoOffer"
+                android:maxLines="3"
+                android:text="title"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="20sp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txtShopName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/txtOfferTitle"
+                android:layout_toLeftOf="@+id/chkImageOffer"
+                android:layout_toRightOf="@+id/imgShopLogoOffer"
+                android:lines="1"
+                android:text="name"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txtMallName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtShopName"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/chkImageOffer"
+                android:layout_toRightOf="@+id/imgShopLogoOffer"
+                android:lines="1"
+                android:text="mall"
+                android:textColor="@android:color/black"
+                android:visibility="gone"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txtAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtMallName"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/chkImageOffer"
+                android:layout_toRightOf="@+id/imgShopLogoOffer"
+                android:maxLines="2"
+                android:text="address"
+                android:textSize="12sp"
+                android:visibility="gone"/>
+
+
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txtOfferCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtOfferTitle"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/imgShopLogoOffer"
+                android:lines="1"
+                android:text="category"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txtTimingOffer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtShopName"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/imgShopLogoOffer"
+                android:lines="1"
+                android:text="timing"
+                android:textSize="12sp" />
+
+            <View
+                android:id="@+id/viewLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/imgShopLogoOffer"
+                android:layout_marginTop="10dp"
+                android:background="@color/wow_gray"
+                android:visibility="invisible"></View>
+        </RelativeLayout>
     </RelativeLayout>
 
 

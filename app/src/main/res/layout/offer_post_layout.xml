@@ -19,14 +19,16 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/highlight_color">
+                android:background="@color/highlight_color"
+                android:padding="8dp">
 
                 <ImageView
                     android:id="@+id/imgBrand"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@android:color/white"
-                    android:src="@drawable/no_image_icon" />
+                    android:src="@drawable/no_image_icon"
+                    android:visibility="gone"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -50,10 +52,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_toLeftOf="@+id/chkImageMall"
-                        android:singleLine="true"
                         android:text=""
                         android:textColor="@android:color/white"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <RatingBar
@@ -99,9 +100,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text=""
+                        android:text="address"
                         android:textColor="@android:color/white"
-                        android:layout_below="@+id/txtMallNamePost" />
+                        android:layout_below="@+id/txtMallNamePost"
+                        android:visibility="gone"/>
                 </RelativeLayout>
 
                 <!--<android.support.v7.widget.AppCompatTextView
@@ -199,7 +201,8 @@
                     android:padding="5dp"
                     android:text=""
                     android:textColor="@android:color/white"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 
@@ -265,7 +268,8 @@
                     android:paddingBottom="10dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="" />
+                    android:text=""
+                    android:textSize="16dp"/>
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btnRate"

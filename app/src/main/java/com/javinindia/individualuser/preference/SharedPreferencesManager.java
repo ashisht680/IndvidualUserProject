@@ -149,5 +149,4 @@ public class SharedPreferencesManager {
         editor.commit();
     }
 
-
 }

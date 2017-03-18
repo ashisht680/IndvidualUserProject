@@ -114,26 +114,14 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
     }
 
     private void initToolbar(View view) {
-        final Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        activity.setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activity.onBackPressed();
-            }
-        });
-        final ActionBar actionBar = activity.getSupportActionBar();
-        actionBar.setTitle(null);
-        AppCompatTextView textView = (AppCompatTextView) view.findViewById(R.id.tittle);
-        if (!TextUtils.isEmpty(owner)) {
-            textView.setText(owner);
-        } else if (!TextUtils.isEmpty(brandName)) {
-            textView.setText(brandName);
+        if (!TextUtils.isEmpty(offerSubCategory)) {
+            setToolbarTitle(offerSubCategory);
+        } else if (!TextUtils.isEmpty(offerCategory)) {
+            setToolbarTitle(offerCategory);
         } else {
-            textView.setText("Offer");
+            setToolbarTitle("Offer");
         }
-        textView.setTypeface(FontAsapRegularSingleTonClass.getInstance(activity).getTypeFace());
+
     }
 
     private void hitViewApi(final String uid, final String offerId, final String shopId) {
@@ -195,8 +183,8 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
     }
 
     private void setDataOnView() {
-        if (!TextUtils.isEmpty(brandName))
-            txtOfferBrandNamePost.setText(Utility.fromHtml(brandName));
+        if (!TextUtils.isEmpty(offerTitle))
+            txtOfferBrandNamePost.setText(Utility.fromHtml(offerTitle));
 
         if (!TextUtils.isEmpty(offerRating)) {
             txtRating.setText("Rating: 3.5/5");
@@ -208,10 +196,15 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
 
 
         if (!TextUtils.isEmpty(owner))
-            txtMallNamePost.setText(Utility.fromHtml(owner));
+            txtMallNamePost.setText(Utility.fromHtml("Sold by: " + owner));
 
-        if (!TextUtils.isEmpty(offerTitle))
-            txtOfferTitle.setText(Utility.fromHtml(offerTitle));
+        if (!TextUtils.isEmpty(brandName)) {
+            if (offerCategory.equals("Books")) {
+                txtOfferTitle.setText(Utility.fromHtml("Author : " + brandName));
+            } else {
+                txtOfferTitle.setText(Utility.fromHtml("Brand : " + brandName));
+            }
+        }
 
         if (!TextUtils.isEmpty(offerPercentType) && !TextUtils.isEmpty(offerPercentage)) {
             txtOfferPercentage.setText(offerPercentType + " " + offerPercentage + "% off");
@@ -219,7 +212,7 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
             double actual = Double.parseDouble(offerActualPrice);
             double discount = Double.parseDouble(offerDiscountPr);
             int percent = (int) (100 - (discount * 100.0f) / actual);
-            txtOfferPercentage.setText(offerPercentType + "\t" + percent + "% off");
+            txtOfferPercentage.setText(offerPercentType + " " + percent + "% off");
         } else if (TextUtils.isEmpty(offerPercentType) && TextUtils.isEmpty(offerPercentage)) {
             if (!TextUtils.isEmpty(offerActualPrice) && !TextUtils.isEmpty(offerDiscountPr)) {
                 double actual = Double.parseDouble(offerActualPrice);
@@ -384,6 +377,7 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
         txtOfferTitle.setTypeface(FontAsapBoldSingleTonClass.getInstance(activity).getTypeFace());
         btnRate.setOnClickListener(this);
         imgBrand.setOnClickListener(this);
+        imgOffer.setOnClickListener(this);
     }
 
     @Override
@@ -418,6 +412,20 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
             case R.id.imgBrand:
                 activity.onBackPressed();
                 break;
+            case R.id.imgOffer:
+                ZoomImageFragment zoomImageFragment = new ZoomImageFragment();
+                Bundle bundle = new Bundle();
+
+                if (!TextUtils.isEmpty(offerPic)) {
+                    bundle.putString("img", offerPic);
+                } else if (!TextUtils.isEmpty(brandPic)) {
+                    bundle.putString("img", brandPic);
+                } else {
+                    bundle.putString("img", "");
+                }
+                zoomImageFragment.setArguments(bundle);
+                callFragmentMethod(zoomImageFragment, this.getClass().getSimpleName(), R.id.navigationContainer);
+                break;
         }
     }
 
@@ -428,11 +436,11 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
             menu.clear();
     }
 
-    public void showContectDialog(String title, String msg) {
+    public void showContectDialog(String title, String msg, String address) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 getActivity());
         alertDialogBuilder.setTitle("Want to purchase the product?\nContact the seller here:");
-        alertDialogBuilder.setMessage("Name: " + title + "\n" + "Mobile no: " + msg);
+        alertDialogBuilder.setMessage("Name: " + title + "\n" + "Mobile no: " + msg + "\n" + "Address: " + address);
         alertDialogBuilder.setCancelable(false);
 
         alertDialogBuilder.setNegativeButton("Got it!",
@@ -483,7 +491,7 @@ public class OfferPostFragment extends BaseFragment implements View.OnClickListe
                                 mobileShop = "name not available";
                             }
 
-                            showContectDialog(name, mobileShop);
+                            showContectDialog(name, mobileShop, shopNewAddress);
 
                         } else {
                             if (!TextUtils.isEmpty(msg)) {

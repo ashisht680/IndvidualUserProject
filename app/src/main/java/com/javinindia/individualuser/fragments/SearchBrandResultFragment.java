@@ -85,20 +85,7 @@ public class SearchBrandResultFragment extends BaseFragment implements View.OnCl
     }
 
     private void initToolbar(View view) {
-        final Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        activity.setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activity.onBackPressed();
-            }
-        });
-        final ActionBar actionBar = activity.getSupportActionBar();
-        actionBar.setTitle(null);
-        AppCompatTextView textView = (AppCompatTextView) view.findViewById(R.id.tittle);
-        textView.setText("Search Brand");
-        textView.setTypeface(FontAsapRegularSingleTonClass.getInstance(activity).getTypeFace());
+        setToolbarTitle("Search Brand");
     }
 
     private void sendRequestOnReplyFeed(final String data) {

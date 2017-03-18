@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.SharedPreferencesCompat;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.javinindia.individualuser.preference.SharedPreferencesManager;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -140,6 +142,7 @@ public class Utility {
         return "";
     }
 
+
     public static void imageLoadGlideLibrary(Context context, final ProgressBar progressBar, ImageView imageView, String url) {
         Glide.with(context)
                 .load(url)
@@ -160,6 +163,8 @@ public class Utility {
                 })
                 .into(imageView);
     }
+
+
 
     public static void imageLoadGlideLibraryPic(Context context, final ImageView NotFound, ImageView imageView, String url) {
         Glide.with(context)

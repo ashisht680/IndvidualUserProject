@@ -77,7 +77,7 @@ public class OfferAdaptar extends RecyclerView.Adapter<OfferAdaptar.ViewHolder> 
 
         if (!TextUtils.isEmpty(requestDetail.getOfferShopDetails().getShopOwnerName().trim())) {
             String ownName = requestDetail.getOfferShopDetails().getShopOwnerName().trim();
-            viewHolder.txtShopName.setText(Utility.fromHtml(ownName));
+            viewHolder.txtShopName.setText(Utility.fromHtml("Sold by: "+ownName));
             if (value == 0) {
                 viewHolder.txtShopName.setVisibility(View.VISIBLE);
             } else if (value == 1) {
@@ -146,7 +146,7 @@ public class OfferAdaptar extends RecyclerView.Adapter<OfferAdaptar.ViewHolder> 
             String test = str.replaceAll("[\\[\\](){}]", "");
             viewHolder.txtAddress.setText(Utility.fromHtml(test));
             if (value == 0) {
-                viewHolder.txtAddress.setVisibility(View.VISIBLE);
+                viewHolder.txtAddress.setVisibility(View.GONE);
             } else if (value == 1) {
                 viewHolder.txtAddress.setVisibility(View.GONE);
             } else if (value == 2) {
@@ -274,7 +274,7 @@ public class OfferAdaptar extends RecyclerView.Adapter<OfferAdaptar.ViewHolder> 
             progressBar = (ProgressBar) itemLayoutView.findViewById(R.id.progress);
             imgShopLogoOffer = (ImageView) itemLayoutView.findViewById(R.id.imgShopLogoOffer);
             txtShopName = (AppCompatTextView) itemLayoutView.findViewById(R.id.txtShopName);
-            txtShopName.setTypeface(FontAsapBoldSingleTonClass.getInstance(context).getTypeFace());
+            txtShopName.setTypeface(FontAsapRegularSingleTonClass.getInstance(context).getTypeFace());
             txtMallName = (AppCompatTextView) itemLayoutView.findViewById(R.id.txtMallName);
             txtMallName.setTypeface(FontAsapRegularSingleTonClass.getInstance(context).getTypeFace());
             txtAddress = (AppCompatTextView) itemLayoutView.findViewById(R.id.txtAddress);
