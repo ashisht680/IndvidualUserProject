@@ -34,8 +34,8 @@
             android:layout_weight="6.3"
             android:background="@drawable/button_border_black_fill_white"
             android:hint="Search brand"
+            android:lines="1"
             android:padding="2dp"
-            android:singleLine="true"
             android:textSize="12dp" />
 
         <ImageView
@@ -77,8 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="There are no offer under this brand."
-            android:visibility="gone" />
+            android:text="Loading.."
+            android:textColor="@android:color/white"/>
     </RelativeLayout>
 
 

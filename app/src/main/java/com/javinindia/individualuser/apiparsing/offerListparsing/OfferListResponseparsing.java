@@ -30,7 +30,7 @@ public class OfferListResponseparsing extends ApiBaseData {
             JSONObject jsonObject = new JSONObject(response.toString());
             setMsg(jsonObject.optString("msg"));
             setStatus(jsonObject.optInt("status"));
-            if (jsonObject.has("Details"))
+            if (jsonObject.optInt("status")==1 & jsonObject.has("Details"))
                 setDetailsListArrayList(getDetailInMethod(jsonObject.optJSONArray("Details")));
 
 

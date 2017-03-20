@@ -8,19 +8,19 @@
     <include layout="@layout/common_toolbar_layout" />
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/txtTitleStore"
+        android:id="@+id/txtTitleBrand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:padding="5dp"
-        android:text="Search seller"
+        android:text="Search Brand"
         android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/llSearch"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:layout_below="@+id/txtTitleStore"
+        android:layout_below="@+id/txtTitleBrand"
         android:background="#e3e3e3"
         android:orientation="horizontal"
         android:padding="3dp"
@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:layout_weight="6.3"
             android:background="@drawable/button_border_black_fill_white"
-            android:hint="Search seller"
+            android:hint="Search product"
             android:lines="1"
             android:padding="2dp"
             android:textSize="12dp" />
@@ -58,8 +58,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            layout="@layout/common_progressbar"
+            android:visibility="gone" />
+
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerviewStoresSearch"
+            android:id="@+id/recyclerviewMallOffer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="8dp"
@@ -74,7 +78,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Loading.."
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"/>
     </RelativeLayout>
+
 
 </LinearLayout>

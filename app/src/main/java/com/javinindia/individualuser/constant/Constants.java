@@ -40,6 +40,8 @@ public class Constants {
     public static final String SEARCH_SHOP_LIST_URL = Constants.NEW_BASE_URL + "searchbyStore.php";
     public static final String SEARCH_BRAND_LIST_URL = Constants.NEW_BASE_URL + "brand_search.php";
     public static final String SEARCH_MALL_LIST_URL = Constants.NEW_BASE_URL + "mallSearch.php";
+    //new search api
+    public static final String SEARCH_PRODUCT_LIST_URL = Constants.NEW_BASE_URL + "searchProducts.php";
 
     public static final String MASTER_BRAND_LIST_URL = Constants.NEW_BASE_URL + "MasterBrandList.php";
     public static final String MASTER_CATEGORY_LIST_URL = Constants.NEW_BASE_URL + "MasterCategoryList.php";

@@ -2,12 +2,10 @@ package com.javinindia.individualuser.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -47,9 +45,10 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * Created by Ashish on 15-11-2016.
+ * Created by Ashish on 20-03-2017.
  */
-public class SearchBrandResultFragment extends BaseFragment implements View.OnClickListener, OfferAdaptar.MyClickListener, TextWatcher, OfferPostFragment.OnCallBackOfferDetailFavListener, StoreTabsFragment.OnCallBackShopFavListener, CheckConnectionFragment.OnCallBackInternetListener {
+
+public class SearchProductResultFragment extends BaseFragment implements View.OnClickListener, OfferAdaptar.MyClickListener, TextWatcher, OfferPostFragment.OnCallBackOfferDetailFavListener, StoreTabsFragment.OnCallBackShopFavListener, CheckConnectionFragment.OnCallBackInternetListener {
 
     private RecyclerView recyclerview;
     private int startLimit = 0;
@@ -62,15 +61,16 @@ public class SearchBrandResultFragment extends BaseFragment implements View.OnCl
     LinearLayout llSearch;
     AppCompatEditText etSearch;
     ImageView imgSearch;
-    String brand;
+   // String brand;
+    String product;
     ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        brand = getArguments().getString("brand");
-        getArguments().remove("brand");
+        product = getArguments().getString("product");
+        getArguments().remove("product");
     }
 
     @Nullable
@@ -80,22 +80,22 @@ public class SearchBrandResultFragment extends BaseFragment implements View.OnCl
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         initToolbar(view);
         initialize(view);
-        sendRequestOnReplyFeed(brand);
+        sendRequestOnReplyFeed(product);
         return view;
     }
 
     private void initToolbar(View view) {
-        setToolbarTitle("Search Brand");
+        setToolbarTitle("Search Product");
     }
 
     private void sendRequestOnReplyFeed(final String data) {
         progressBar.setVisibility(View.VISIBLE);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.SEARCH_BRAND_LIST_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.SEARCH_PRODUCT_LIST_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         progressBar.setVisibility(View.GONE);
-                        txtDataNotFound.setText("There are no offer under this brand.");
+                        txtDataNotFound.setText("There are no offer under this product.");
                         OfferListResponseparsing responseparsing = new OfferListResponseparsing();
                         responseparsing.responseParseMethod(response);
                         int status = responseparsing.getStatus();
@@ -129,7 +129,7 @@ public class SearchBrandResultFragment extends BaseFragment implements View.OnCl
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("uid", SharedPreferencesManager.getUserID(activity));
-                params.put("bname", data);
+                params.put("search", data);
                 return params;
             }
 
@@ -157,7 +157,7 @@ public class SearchBrandResultFragment extends BaseFragment implements View.OnCl
                 = new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false);
         recyclerview.setLayoutManager(layoutMangerDestination);
         recyclerview.setAdapter(adapter);
-        adapter.setMyClickListener(SearchBrandResultFragment.this);
+        adapter.setMyClickListener(SearchProductResultFragment.this);
 
         txtDataNotFound = (AppCompatTextView) view.findViewById(R.id.txtDataNotFound);
         txtDataNotFound.setTypeface(FontAsapRegularSingleTonClass.getInstance(activity).getTypeFace());
@@ -172,7 +172,7 @@ public class SearchBrandResultFragment extends BaseFragment implements View.OnCl
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.search_brand_result_layout;
+        return R.layout.search_product_result_layout;
     }
 
     @Override

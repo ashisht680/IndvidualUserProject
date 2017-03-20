@@ -122,13 +122,8 @@ public class HomeFragment extends BaseFragment implements NavigationAboutFragmen
     }
 
     private void methodCityDialog() {
-
-
-        TextView content = new TextView(activity);
-        content.setTypeface(FontAsapBoldSingleTonClass.getInstance(activity).getTypeFace());
         final String stateArray[] = {"Delhi NCR", "Mumbai", "Bengaluru", "Chennai", "Kolkata"};
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(activity);
-        builder.setView(content);
         builder.setTitle("SELECT CITY");
         builder.setNegativeButton(android.R.string.cancel, null);
         builder.setItems(stateArray, new DialogInterface.OnClickListener() {

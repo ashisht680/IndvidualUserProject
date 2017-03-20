@@ -59,6 +59,7 @@ public class SearchTabFragment extends BaseFragment {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+        adapter.addFragment(new SearchProductFragment(), "Products");
         adapter.addFragment(new SearchBrandFragment(), "Brands");
         adapter.addFragment(new SearchStoreFragment(), "Seller");
        // adapter.addFragment(new SearchMallFragments(), "Malls");

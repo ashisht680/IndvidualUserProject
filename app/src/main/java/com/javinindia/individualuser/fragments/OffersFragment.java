@@ -88,6 +88,7 @@ public class OffersFragment extends BaseFragment implements OfferAdaptar.MyClick
                     @Override
                     public void onResponse(String response) {
                         progressBar.setVisibility(View.GONE);
+                        txtDataNotFound.setText("No offer found");
                         OfferListResponseparsing responseparsing = new OfferListResponseparsing();
                         responseparsing.responseParseMethod(response);
                         int status = responseparsing.getStatus();
@@ -110,6 +111,7 @@ public class OffersFragment extends BaseFragment implements OfferAdaptar.MyClick
                                         adapter.notifyDataSetChanged();
                                         adapter.setData(arrayList);
                                         if (arrayList.size() > 0) {
+                                            mSwipeRefreshLayout.setRefreshing(false);
                                         } else {
                                             sendRequestOnOfferListFeed(0, 5);
                                         }
@@ -118,9 +120,10 @@ public class OffersFragment extends BaseFragment implements OfferAdaptar.MyClick
                                 mSwipeRefreshLayout.setRefreshing(false);
                             } else {
                                 txtDataNotFound.setVisibility(View.VISIBLE);
+                                mSwipeRefreshLayout.setRefreshing(false);
                             }
                         } else {
-
+                            mSwipeRefreshLayout.setRefreshing(false);
                         }
                     }
                 },
