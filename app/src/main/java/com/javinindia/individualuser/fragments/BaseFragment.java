@@ -44,6 +44,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.javinindia.individualuser.R;
 import com.javinindia.individualuser.activity.BaseActivity;
+import com.javinindia.individualuser.font.FontAsapBoldSingleTonClass;
 import com.javinindia.individualuser.font.FontAsapRegularSingleTonClass;
 import com.javinindia.individualuser.utility.Utility;
 import com.javinindia.individualuser.volleycustomrequest.CustomJSONObjectRequest;
@@ -130,20 +131,15 @@ public abstract class BaseFragment extends Fragment implements Response.Listener
             if (!TextUtils.isEmpty(title)) {
                 getToolbar().setTitle(title);
                 getToolbar().setTitleTextColor(Utility.getColor(activity,android.R.color.white));
-                applyFontForToolbarTitle(activity);
-            }
-        }
-    }
-
-    public static void applyFontForToolbarTitle(Activity a){
-        Toolbar toolbar = (Toolbar) a.findViewById(R.id.toolbar);
-        for(int i = 0; i < toolbar.getChildCount(); i++){
-            View view = toolbar.getChildAt(i);
-            if(view instanceof TextView){
-                TextView tv = (TextView) view;
-                if(tv.getText().equals(a.getTitle())){
-                    tv.setTypeface(FontAsapRegularSingleTonClass.getInstance(a).getTypeFace());
-                    break;
+                for(int i = 0; i < getToolbar().getChildCount(); i++){
+                    View view = getToolbar().getChildAt(i);
+                    if(view instanceof TextView){
+                        TextView tv = (TextView) view;
+                        if(tv.getText().equals(getToolbar().getTitle())){
+                            tv.setTypeface(FontAsapBoldSingleTonClass.getInstance(activity).getTypeFace());
+                            break;
+                        }
+                    }
                 }
             }
         }

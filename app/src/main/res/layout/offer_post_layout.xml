@@ -137,10 +137,10 @@
                     <ImageView
                         android:id="@+id/imgOffer"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="250dp"
                         android:src="@drawable/no_image_icon"
                         android:layout_centerInParent="true"
-                        android:scaleType="fitXY" />
+                        android:scaleType="fitCenter" />
                 </RelativeLayout>
 
                 <LinearLayout
