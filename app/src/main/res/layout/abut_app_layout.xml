@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:text="Visit your favorite mall without actually visiting it! Check out hot offers &amp; happening events.\n"
+                android:text="Sale50 24x7 all year round. Check out the hottest offers brought straight from direct sellers. \n"
                 android:layout_marginTop="10dp"
                 android:textSize="16sp"/>
 
@@ -47,14 +47,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:text="We understand your time is super precious and shopping can sometimes mean whole day and nothing bought or nothing decided was bought. Can you relate?\n" />
+                android:text="We understand your time is super precious and shopping can sometimes means a whole day of walking through shops and at the end of it- nothing bought! Can you relate? That is why we bring to you- Sale50, a simple app that brings all your shopping requirements to your hands- Sale50 has the best! Hint- offers! \n" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/txtPoints"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:text="That is why we bring to you- Sale50, a simple app that brings all your favorite malls to your hands. Shops, Brands, Food outlets, Food Joints, Food Trolleys, Pop Shops or even Weekend Melas whatever you want to know about- Sale50 has all the best updates about it. Hint- offers! With Sale50 you can plan the shopping trip by browsing all the stores, shops, eating places, fun activities before hand and get the best shopping experience by picking and choosing offers that appeal the most to you.\n\nYou can browse the shops &amp; brands checking out the exclusive offers they have published on the Sale50 app, or search an offer for any product that has caught your fancy recently, or simply get the quickest real time directions to the mall that you and your folks are dying to go, all this- just for you!\n\nOh and Sale50 does not only save your time but also your money. One plus one offers, discounted rates, offers till stocks last, offers that are most popular- Sale50 has it all! Basically if you are going shopping at a mall without checking out Sale50 you just might lose out on something big! Call it money, call it time or call it experience, simply install Sale50 and all three will be by your side to gift you the best day possible.\n\nAlso, if you are not sure whether the store you love sells the products of your favorite brand… City Mall has come to your rescue. It will provide you the correct information regarding where your favorite brand products can be purchased from. Or if you don’t know which store/mall/brand to go for, simply check out the rating that Sale50 provides gathered with the help of the users.\n\nAll this awesomeness in one simple app! Download Sale50 app today!\n" />
+                android:text="One plus one offers, discounted rates, offers till stocks last, offers that are most popular- Sale50 has it all! And, it is brought directly from the sellers, no middle men and no extra costs involved.\n\nSo, basically if you are going shopping at a Store without checking out Sale50 you just might lose out on something big! Call it money, call it time or call it experience, simply install Sale50 and all three will be by your side to gift you the best shopping deal possible.\n\nAlso, if you are not sure form where to buy your favorite products…  Sale50 has come just for your rescue! It will provide you the correct information regarding where your favorite products can be purchased from. Or if you don’t know which seller to go for, simply check out the rating that Sale50 provides gathered with the help of the users.\n\nAll this awesomeness in one simple app! Download Sale50 app today!" />
         </LinearLayout>
 
     </ScrollView>
